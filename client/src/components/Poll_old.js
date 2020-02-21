@@ -15,6 +15,7 @@ class Poll extends Component {
     const {poll} = this.props.poll;
     
     console.log(poll)
+    // Both functions only render information if it has loaded from database. 
     const answers =(poll)=>{
       try{
         if(poll !== null || 'undefined')
@@ -36,6 +37,7 @@ class Poll extends Component {
         console.log(err)
       }
     }
+    // Only renders if there is information to render
     if(poll!==null || "undefined"){
     return(
       <Container fluid>

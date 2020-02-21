@@ -3,7 +3,7 @@ const initialState = {
   poll:{},
   polls:[]
 }
-
+// Reducer that filters for one poll at a time
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_POLL:
@@ -19,12 +19,3 @@ export default function(state = initialState, action) {
       return state;
   }
 };
-/********* 
-export const currentPoll = (state = {}, action) => {
-  switch (action.type) {
-    case SET_CURRENT_POLL:
-      return action.poll;
-    default:
-      return state;
-  }
-};********/

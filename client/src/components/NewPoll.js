@@ -1,7 +1,8 @@
     import React, { Component } from 'react';
     import { Button, Form, Grid,Modal, Header,Input, Segment} from 'semantic-ui-react'
-    import { connect } from 'react-redux';
-    import { createPoll } from '../actions/poll';
+    import axios from 'axios'
+    // import { connect } from 'react-redux';
+    // import { createPoll } from '../actions/poll';
 
     class CreatePoll extends Component {
         constructor(props) {
@@ -16,7 +17,7 @@
             this.handleAnswer = this.handleAnswer.bind(this);
             this.handleSubmit = this.handleSubmit.bind(this);
         }
-
+        //FUNCTION HANDLING THE SAVING OF POLLS
         handleChange(e) {
             this.setState({ [e.target.name]: e.target.value });
         }
@@ -30,10 +31,17 @@
             options[index] = e.target.value;
             this.setState({ options });
         }
-
+        // PASSES NEW POLL OBJECT TO DATABASE
         handleSubmit(e) {
             e.preventDefault();
-            this.props.createPoll(this.state);
+            const PollObject = {
+                    question:this.state.question,
+                    options:this.state.options,
+                    status: 'inactive'
+            }
+            console.log(PollObject)
+            axios.post('http://localhost:8000/api/poll/',PollObject)
+            this.setState({question:'',options:['','']})
         }
         render() {
             const options = this.state.options.map((option, i) => (
@@ -46,7 +54,7 @@
                 onChange={e => this.handleAnswer(e, i)}
                 />
         ));
-
+                // FORM UI USING SEMANTIC UI REACT
             return (
             <Modal trigger={<Button>Add New Poll</Button>}>
                 <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
@@ -82,4 +90,4 @@
         }
     }
 
-export default connect(() => ({}), { createPoll })(CreatePoll);
+export default CreatePoll
