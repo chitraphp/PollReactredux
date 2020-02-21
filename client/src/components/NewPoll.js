@@ -1,7 +1,8 @@
     import React, { Component } from 'react';
     import { Button, Form, Grid,Modal, Header,Input, Segment} from 'semantic-ui-react'
-    import { connect } from 'react-redux';
-    import { createPoll } from '../actions/poll';
+    import axios from 'axios'
+    // import { connect } from 'react-redux';
+    // import { createPoll } from '../actions/poll';
 
     class CreatePoll extends Component {
         constructor(props) {
@@ -33,7 +34,14 @@
 
         handleSubmit(e) {
             e.preventDefault();
-            this.props.createPoll(this.state);
+            const PollObject = {
+                    question:this.state.question,
+                    options:this.state.options,
+                    status: 'inactive'
+            }
+            console.log(PollObject)
+            axios.post('http://localhost:8000/api/poll/',PollObject)
+            this.setState({question:'',options:['','']})
         }
         render() {
             const options = this.state.options.map((option, i) => (
@@ -82,4 +90,4 @@
         }
     }
 
-export default connect(() => ({}), { createPoll })(CreatePoll);
+export default CreatePoll

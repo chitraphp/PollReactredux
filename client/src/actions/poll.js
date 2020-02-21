@@ -21,15 +21,16 @@ export const getPoll = () => async dispatch => {
     dispatch({type:GET_POLL, payload:null})
   }
 };
-export const createPoll = data => {
-  return async dispatch => {
-    try {
-      const poll = await axios.post('/', data);
-      dispatch(setCurrentPoll(poll));
-    } catch (err) {
-      const { error } = err.response.data;
-      dispatch(error);
-    }
-  };
-};
+// export const createPoll =  async data => {
+//   const poll = await axios.post('/', data);
+//   return  dispatch => {
+//     try {
+//       console.log(poll)
+//       dispatch(setCurrentPoll(poll));
+//     } catch (err) {
+//       const { error } = err.response.data;
+//       dispatch(error);
+//     }
+//   };
+// };
 

@@ -14,11 +14,11 @@ export default function(state = initialState, action) {
   }
 };
 
-export const currentPoll = (state = {}, action) => {
-  switch (action.type) {
-    case SET_CURRENT_POLL:
-      return action.poll;
-    default:
-      return state;
-  }
-};
+// export const currentPoll = (state = {}, action) => {
+//   switch (action.type) {
+//     case SET_CURRENT_POLL:
+//       return action.poll;
+//     default:
+//       return state;
+//   }
+// };
