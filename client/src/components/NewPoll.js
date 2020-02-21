@@ -17,7 +17,7 @@
             this.handleAnswer = this.handleAnswer.bind(this);
             this.handleSubmit = this.handleSubmit.bind(this);
         }
-
+        //FUNCTION HANDLING THE SAVING OF POLLS
         handleChange(e) {
             this.setState({ [e.target.name]: e.target.value });
         }
@@ -31,7 +31,7 @@
             options[index] = e.target.value;
             this.setState({ options });
         }
-
+        // PASSES NEW POLL OBJECT TO DATABASE
         handleSubmit(e) {
             e.preventDefault();
             const PollObject = {
@@ -54,7 +54,7 @@
                 onChange={e => this.handleAnswer(e, i)}
                 />
         ));
-
+                // FORM UI USING SEMANTIC UI REACT
             return (
             <Modal trigger={<Button>Add New Poll</Button>}>
                 <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>

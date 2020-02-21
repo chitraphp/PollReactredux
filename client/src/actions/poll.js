@@ -11,7 +11,7 @@ export const setCurrentPoll = poll => ({
   type: SET_CURRENT_POLL,
   poll,
 });
-
+// ACTION TO GET A SINGLE POLL FROM DATABASE
 export const getPoll = () => async dispatch => {
   const response =await axios.get(`/api/poll/`)
   if(response.data !== null ){
@@ -21,16 +21,4 @@ export const getPoll = () => async dispatch => {
     dispatch({type:GET_POLL, payload:null})
   }
 };
-// export const createPoll =  async data => {
-//   const poll = await axios.post('/', data);
-//   return  dispatch => {
-//     try {
-//       console.log(poll)
-//       dispatch(setCurrentPoll(poll));
-//     } catch (err) {
-//       const { error } = err.response.data;
-//       dispatch(error);
-//     }
-//   };
-// };
 

@@ -74,7 +74,7 @@ router.get('/test',
     Poll.findById({_id:req.params.id})
     .then(poll=>{
       if(answer){
-       const vote = poll.options.map(option=>
+        const vote = poll.options.map(option=>
           option.option === answer? {
             _id:option.id,
             option:option.option,
