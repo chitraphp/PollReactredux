@@ -10,6 +10,20 @@ router.get('/test',
     msg: 'questions works'
   }));
 
+  router.get('/all', (req, res) => {
+    const errors = {};
+    Poll.find({status:"active"})      
+      .then(polls => {
+        if (!polls) {
+          errors.nopoll = 'There is no active poll';
+          return res.status(404).json(errors);
+        }
+        res.json(polls);
+      })
+      .catch(err => res.status(404).json({ polls: 'There is no polls' }));
+  });
+
+  /*** get avtive poll */
   router.get('/', (req, res) => {
     const errors = {};
   
@@ -24,7 +38,22 @@ router.get('/test',
       })
       .catch(err => res.status(404).json({ poll: 'There is no poll' }));
   });
+/*********************Get poll by id************ */
+  router.get('/:id', (req, res) => {
+    const errors = {};
   
+    Poll.findById({_id:req.params.id})      
+      .then(poll => {
+        if (!poll) {
+          errors.nopoll = 'There is no  poll';
+          return res.status(404).json(errors);
+        }  
+        res.json(poll);
+      })
+      .catch(err => res.status(404).json({ poll: 'There is no poll' }));
+  });
+  
+  /*******************create a new poll ************/
   router.post('/',(req,res)=>{
     const {question, options, status} = req.body;
     console.log("question");
@@ -36,6 +65,29 @@ router.get('/test',
     });
     poll.save().then(poll => res.json(poll))
     .catch(err=> console.log(err));
+  });
+
+/*************************vote on a poll*************************/
+  router.post('/vote/:id',(req,res)=>{
+    const {answer} = req.body;
+    console.log("answer");
+    Poll.findById({_id:req.params.id})
+    .then(poll=>{
+      if(answer){
+       const vote = poll.options.map(option=>
+          option.option === answer? {
+            _id:option.id,
+            option:option.option,
+            votes:option.votes+1
+          }:option);          
+        poll.options = vote;
+        poll.voted = poll.voted+1;
+        poll.save().then(res.json(poll));        
+      }else{
+        throw new Error("Answer not provided")
+      }      
+    }).catch(err=>res.json({error:"there is no poll"}))
+    
   });
 
   module.exports = router;
