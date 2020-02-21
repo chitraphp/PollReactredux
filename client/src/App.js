@@ -8,7 +8,6 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-      <h1>Poll App</h1>
       <Poll></Poll>
     </div>
     </Provider>

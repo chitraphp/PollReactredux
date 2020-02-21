@@ -1,28 +1,62 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import axios from "axios";
 import {getPoll} from '../actions/poll';
+import NewPoll from './NewPoll'
+import {Button,Container,Header,Card} from 'semantic-ui-react'
 
-class Poll extends React.Component {
+class Poll extends Component {
   
   componentDidMount(){
     this.props.getPoll();      
   }
   render() {
+    console.log(this.props.poll)
     const {poll} = this.props.poll;
-    //console.log(poll.question);
-    const answers = poll.options && poll.options.map(option=>(
-      <button key={option._id}>{option.option}</button>
-    ));
+    
+    console.log(poll)
+    const answers =(poll)=>{
+      try{
+        if(poll !== null || 'undefined')
+        return (poll.options && poll.options.map(option=>(
+        <Button primary content={option.option} key={option._id}/>
+        )))
+      }
+      catch(err){
+        console.log(err)
+      }
+    }
+    
+    const question =(poll)=>{
+      try{
+        if(poll !== null || 'undefined')
+        return <Header as='h5'>{poll.question}</Header>
+      }
+      catch(err){
+        console.log(err)
+      }
+    }
+    if(poll!==null || "undefined"){
     return(
-      <div>
-        <div>{poll.question}</div>
-        <div>{answers}</div>
-
-      </div>
+      <Container fluid>
+        <Header as='h1'>Poll App</Header>
+        <Card centered>
+          <Card.Content>
+            <Card.Header as ='h2'>Question of the day!</Card.Header>
+            <Card.Meta> {question(poll)} </Card.Meta>
+          </Card.Content>
+          <Card.Content extra>
+            {answers(poll)}
+          </Card.Content>
+        </Card>
+        <NewPoll/>
+    </Container>
     )
-  };
+  }
+  else{
+    return <h1>Data Loading</h1>
+  }
+}
 
 }
 Poll.propTypes = {

@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-
 const Poll = require('../../models/poll');
 
 //  @route  GET api/users/test
