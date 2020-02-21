@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const poll = require('./routes/api/poll');
+const user = require('./routes/api/user');
 const cors =require('cors')
 const app = express();
 
@@ -18,5 +19,6 @@ mongoose
 app.get('/',(req,res)=>res.send("hello "));
 
 app.use('/api/poll',poll);
+app.use('/api/users', user);
 const port = 8000;
 app.listen(port, ()=> console.log(`server is running on port ${port}`));
