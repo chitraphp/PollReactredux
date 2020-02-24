@@ -1,7 +1,7 @@
 import _ from "lodash";
 import React, { Component } from "react";
-import {Container,Icon,Image,Menu,Sidebar,Responsive} from "semantic-ui-react";
-
+import {Container,Icon,Menu,Sidebar,Responsive} from "semantic-ui-react";
+import {Link} from 'react-router-dom'
     const NavBarMobile = ({children,leftItems,onPusherClick,onToggle,rightItems,visible}) => (
         <Sidebar.Pushable>
             <Sidebar
@@ -33,9 +33,9 @@ import {Container,Icon,Image,Menu,Sidebar,Responsive} from "semantic-ui-react";
 
 const NavBarDesktop = ({ leftItems, rightItems }) => (
     <Menu fixed="top" inverted>
-            {_.map(leftItems, item => <Menu.Item {...item} />)}
+            {_.map(leftItems, item => < Menu.Item {...item} as={Link} to={item.link}/>)}
         <Menu.Menu position="right">
-            {_.map(rightItems, item => <Menu.Item {...item} />)}
+            {_.map(rightItems, item => <Menu.Item {...item} as={Link} to={item.link} />)}
         </Menu.Menu>
     </Menu>
 );
@@ -83,12 +83,12 @@ class NavBar extends Component {
 }
 
     const leftItems = [
-    { as: "a", content: "Home", key: "home" },
-    { as: "a", content: "Posts", key: "posts" }
+    { as: "a", content: "Home", key: "home", link:"/admin"},
+    { as: "a", content: "Posts", key: "posts"}
     ];
     const rightItems = [
-    { as: "a", content: "Login", key: "login" },
-    { as: "a", content: "Register", key: "register" }
+    { as: "a", content: "Login", key: "login" , link:'/login'},
+    { as: "a", content: "Register", key: "register", link:'/register'}
     ];
 
     const NavigationBar = () => (
