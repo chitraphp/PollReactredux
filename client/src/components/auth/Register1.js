@@ -54,6 +54,7 @@ class Register extends Component {
     const { errors } = this.state;
 
     return (
+      
       <div className="register">
         <div className="container">
           <div className="row">

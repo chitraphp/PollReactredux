@@ -1,12 +1,14 @@
-import { ADD_ERROR, REMOVE_ERROR } from '../actions/actionTypes';
+import { GET_ERRORS, CLEAR_ERRORS } from '../actions/actionTypes';
 
-export default (state = { message: null }, action) => {
+const initialState = {};
+
+export default function(state = initialState, action) {
   switch (action.type) {
-    case ADD_ERROR:
-      return { ...state, message: action.error };
-    case REMOVE_ERROR:
-      return { ...state, message: null };
+    case GET_ERRORS:
+      return action.payload;
+    case CLEAR_ERRORS:
+      return {};
     default:
       return state;
   }
-};
+}
