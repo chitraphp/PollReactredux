@@ -9,16 +9,16 @@ router.get('/test',
   (req, res) => res.json({
     msg: 'questions works'
   }));
-
+// get all polls
   router.get('/all', (req, res) => {
     const errors = {};
-    Poll.find({status:"active"})      
+    Poll.find()      
       .then(polls => {
         if (!polls) {
           errors.nopoll = 'There is no active poll';
           return res.status(404).json(errors);
         }
-        res.json(polls);
+        res.json({polls});
       })
       .catch(err => res.status(404).json({ polls: 'There is no polls' }));
   });

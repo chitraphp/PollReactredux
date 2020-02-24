@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {getPoll} from '../actions/poll';
 import NewPoll from './NewPoll'
 import {Button,Container,Header,Card} from 'semantic-ui-react'
+import PollGrid from './PollGrid/PollGrid';
 
 class Poll extends Component {
   
@@ -13,7 +14,6 @@ class Poll extends Component {
   render() {
     console.log(this.props.poll)
     const {poll} = this.props.poll;
-    
     console.log(poll)
     // Both functions only render information if it has loaded from database. 
     const answers =(poll)=>{
@@ -52,6 +52,7 @@ class Poll extends Component {
           </Card.Content>
         </Card>
         <NewPoll/>
+        <PollGrid/>
     </Container>
     )
   }

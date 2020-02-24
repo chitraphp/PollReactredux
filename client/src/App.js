@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Poll from './components/Poll_old';
 
+
 function App() {
   return (
     <Provider store={store}>
