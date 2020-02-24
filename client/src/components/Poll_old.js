@@ -5,7 +5,7 @@ import {getPoll,vote} from '../actions/poll';
 import NewPoll from './NewPoll'
 import {Button,Container,Header,Card} from 'semantic-ui-react'
 import PollGrid from './PollGrid/PollGrid';
-
+import NavBar from './HomePage/NavigationBar'
 class Poll extends Component {
   
   componentDidMount(){
@@ -22,7 +22,7 @@ class Poll extends Component {
         if(poll !== null || 'undefined')
         return (poll.options && poll.options.map(option=>(
         <Button primary content={option.option} key={option._id}
-         onClick = {()=>this.props.vote(poll._id,{answer:option.option})}/>
+          onClick = {()=>this.props.vote(poll._id,{answer:option.option})}/>
         )))
       }
       catch(err){
@@ -43,6 +43,7 @@ class Poll extends Component {
     if(poll!==null || "undefined"){
     return(
       <Container fluid>
+      <NavBar/>
         <Header as='h1'>Poll App</Header>
         <Card centered>
           <Card.Content>
