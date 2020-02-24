@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {getPoll,vote} from '../actions/poll';
-import NewPoll from './NewPoll'
 import {Button,Container,Header,Card} from 'semantic-ui-react'
 import PollGrid from './PollGrid/PollGrid';
-import NavBar from './HomePage/NavigationBar'
 class Poll extends Component {
   
   componentDidMount(){
@@ -43,8 +41,6 @@ class Poll extends Component {
     if(poll!==null || "undefined"){
     return(
       <Container fluid>
-      <NavBar/>
-        <Header as='h1'>Poll App</Header>
         <Card centered>
           <Card.Content>
             <Card.Header as ='h2'>Question of the day!</Card.Header>
@@ -54,8 +50,6 @@ class Poll extends Component {
             {answers(poll)}
           </Card.Content>
         </Card>
-        
-        <PollGrid/>
     </Container>
     )
   }

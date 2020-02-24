@@ -83,8 +83,8 @@ class NavBar extends Component {
 }
 
     const leftItems = [
-    { as: "a", content: "Home", key: "home", link:"/admin"},
-    { as: "a", content: "Posts", key: "posts"}
+    { as: "a", content: "Home", key: "home", link:"/home"},
+    { as: "a", content: "Polls", key: "polls", link:"/table"}
     ];
     const rightItems = [
     { as: "a", content: "Login", key: "login" , link:'/login'},
@@ -92,8 +92,7 @@ class NavBar extends Component {
     ];
 
     const NavigationBar = () => (
-    <NavBar leftItems={leftItems} rightItems={rightItems}>
-        
+    <NavBar leftItems={leftItems} rightItems={rightItems}> 
     </NavBar>
     );
 
