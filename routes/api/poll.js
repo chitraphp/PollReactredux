@@ -87,8 +87,18 @@ router.get('/test',
       }else{
         throw new Error("Answer not provided")
       }      
-    }).catch(err=>res.json({error:"there is no poll"}))
-    
+    }).catch(err=>res.json({error:"there is no poll"}))    
   });
+
+  /***************************Delete Post***************************/
+  router.delete('/:id', (req, res) => {
+    const errors = {};
+    Poll.findOneAndRemove({_id:req.params.id})      
+      .then(() => {
+        res.json({"success":"true"})
+      })
+      .catch(err => res.status(404).json({ poll: 'can not delete poll' }));
+  });
+
 
   module.exports = router;
