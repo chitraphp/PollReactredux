@@ -21,6 +21,7 @@ router.post('/login', (req, res) => {
   }
 
   const name = req.body.name;
+  const email = req.body.email;
   const password = req.body.password;
 
   // Find user by email
@@ -39,7 +40,8 @@ router.post('/login', (req, res) => {
         //User matched
         const payload = {
           id: user.id,
-          name: user.name,          
+          name: user.name,
+          email:user.email          
         };
 
         jwt.sign(payload, 
@@ -77,7 +79,8 @@ router.post('/register',(req,res)=>{
       return res.status(400).json(errors);
     }
     const newUser = new User({
-      name: req.body.name,    
+      name: req.body.name,
+      email:req.body.email,    
       password: req.body.password
     });
 
