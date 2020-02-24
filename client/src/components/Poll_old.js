@@ -53,7 +53,7 @@ class Poll extends Component {
             {answers(poll)}
           </Card.Content>
         </Card>
-        <NewPoll/>
+        
         <PollGrid/>
     </Container>
     )
