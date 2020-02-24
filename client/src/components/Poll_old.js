@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {getPoll} from '../actions/poll';
+import {getPoll,vote} from '../actions/poll';
 import NewPoll from './NewPoll'
 import {Button,Container,Header,Card} from 'semantic-ui-react'
 import PollGrid from './PollGrid/PollGrid';
@@ -18,9 +18,11 @@ class Poll extends Component {
     // Both functions only render information if it has loaded from database. 
     const answers =(poll)=>{
       try{
+        console.log(poll._id);
         if(poll !== null || 'undefined')
         return (poll.options && poll.options.map(option=>(
-        <Button primary content={option.option} key={option._id}/>
+        <Button primary content={option.option} key={option._id}
+         onClick = {()=>this.props.vote(poll._id,{answer:option.option})}/>
         )))
       }
       catch(err){
@@ -64,11 +66,12 @@ class Poll extends Component {
 }
 Poll.propTypes = {
   getPoll: PropTypes.func.isRequired,
-  poll: PropTypes.object.isRequired
+  poll: PropTypes.object.isRequired,
+  vote:PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   poll: state.poll
 });
 
-export default connect(mapStateToProps, { getPoll })(Poll);
+export default connect(mapStateToProps, { getPoll,vote })(Poll);

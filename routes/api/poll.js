@@ -70,7 +70,8 @@ router.get('/test',
 /*************************vote on a poll*************************/
   router.post('/vote/:id',(req,res)=>{
     const {answer} = req.body;
-    console.log("answer");
+    console.log(answer);
+    console.log(req.params.id);
     Poll.findById({_id:req.params.id})
     .then(poll=>{
       if(answer){
