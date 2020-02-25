@@ -16,7 +16,7 @@ const PollResults = (props)=>{
                 </RevealContent>
                 <Reveal.Content hidden>
                   <Segment  color ='teal'>
-                    <p> {option.option} :<br></br> {option.votes}</p>  
+                    <p> {option.option} : {option.votes}</p>  
                   </Segment>
                 </Reveal.Content>
               </Reveal>
