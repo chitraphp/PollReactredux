@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom'
 import { loginUser } from '../../actions/authActions';
 import TextFieldGroup from '../common/TextFieldGroup';
+import { Segment,Button } from 'semantic-ui-react';
 
 class Login extends Component {
   constructor() {
@@ -78,6 +80,9 @@ class Login extends Component {
                 />
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
+              <Segment>
+                <Button color ='black' as ={Link} to ='/register'>Dont have a login? Click here to register!</Button>
+              </Segment>
             </div>
           </div>
         </div>

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {getPoll,vote} from '../actions/poll';
 import {Button,Container,Header,Card} from 'semantic-ui-react'
-import PollGrid from './PollGrid/PollGrid';
 class Poll extends Component {
   
   componentDidMount(){
