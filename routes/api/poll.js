@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Poll = require('../../models/poll');
+const validatePollInput = require('../../validation/poll');
 
 //  @route  GET api/users/test
 //  @desc   Tests user route
@@ -56,8 +57,12 @@ router.get('/test',
   /*******************create a new poll ************/
   router.post('/',(req,res)=>{
     const {question, options, status} = req.body;
+    const { errors, isValid } = validatePollInput(req.body);
+    if(!isValid){
+      return res.status(400).json(errors);
+    }
     console.log("question");
-    console.log(status);
+    console.log(isValid);
     const poll = new Poll({
       question,
       status,

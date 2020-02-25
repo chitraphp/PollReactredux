@@ -11,7 +11,8 @@ const optionSchema = new Schema({
 const pollSchema = new Schema({
   question:{
     type:String,
-    required:true
+    required:true,
+    message:"question required"
   },
   options:[optionSchema],
   voted:{

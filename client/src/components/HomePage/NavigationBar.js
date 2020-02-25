@@ -82,13 +82,15 @@ class NavBar extends Component {
     }
 }
 
-    const leftItems = [
+const leftItems = [
     { as: "a", content: "Home", key: "home", link:"/home"},
     { as: "a", content: "Polls", key: "polls", link:"/table"}
     ];
+    
     const rightItems = [
     { as: "a", content: "Login", key: "login" , link:'/login'},
-    { as: "a", content: "Register", key: "register", link:'/register'}
+    { as: "a", content: "Register", key: "register", link:'/register'},
+    { as: "a", content: "Logout", key: "logout", link:'/logout'}
     ];
 
     const NavigationBar = () => (
