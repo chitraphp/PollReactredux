@@ -12,11 +12,12 @@ class Poll extends Component {
   render() {
     console.log(this.props.poll)
     const {poll} = this.props.poll;
+    console.log(poll.status)
     // Both functions only render information if it has loaded from database. 
     const answers =(poll)=>{
       try{
         console.log(poll._id);
-        if(poll !== null || 'undefined')
+        if(poll !== null || 'undefined' || poll.status==='active')
         return (
           poll.options && poll.options.map(option=>(
             <Button primary content={option.option} key={option._id}
@@ -30,7 +31,7 @@ class Poll extends Component {
     }
     const question =(poll)=>{
       try{
-        if(poll !== null || 'undefined')
+        if(poll !== null || 'undefined' || poll.status==='active')
         return <Header as='h5'>{poll.question}</Header>
       }
       catch(err){
