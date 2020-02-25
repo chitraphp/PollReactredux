@@ -48,7 +48,7 @@ class App extends Component{
             <Route exact path="/login" component={Login} />
             <Route exact path='/home' component={Poll}/>
             <Route exact path='/table' component={PollGrid}/>
-            <Redirect to ='/login'/>
+            <Redirect to ='/home'/>
           </Switch>
         </div>
       </Router>
