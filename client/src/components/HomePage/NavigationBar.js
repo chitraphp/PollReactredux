@@ -40,6 +40,14 @@ const NavBarDesktop = ({ leftItems, rightItems }) => (
     </Menu>
 );
 
+// const LoggedInNavBar = ({leftItems,alternateItem}) => { 
+//     <Menu fixed="top" inverted>
+//             {_.map(leftItems, item => < Menu.Item {...item} as={Link} to={item.link}/>)}
+//         <Menu.Menu position="right">
+//             {_.map(alternateItem, item => <Menu.Item {...item} as={Link} to={item.link} />)}
+//         </Menu.Menu>
+//     </Menu>
+// }
 const NavBarChildren = ({ children }) => (
     <Container style={{ marginTop: "5em" }}>{children}</Container>
 );
@@ -54,7 +62,6 @@ class NavBar extends Component {
 
         if (visible) this.setState({ visible: false });
     };
-
     handleToggle = () => this.setState({ visible: !this.state.visible });
 
     render() {
@@ -92,7 +99,9 @@ const leftItems = [
     { as: "a", content: "Register", key: "register", link:'/register'},
     { as: "a", content: "Logout", key: "logout", link:'/logout'}
     ];
-
+    // const alternateItem =[
+    //     {as: 'a' , content:'Logout', key:'logout', link:'/logout' },
+    // ]
     const NavigationBar = () => (
     <NavBar leftItems={leftItems} rightItems={rightItems}> 
     </NavBar>

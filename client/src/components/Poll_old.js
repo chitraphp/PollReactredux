@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {getPoll,vote} from '../actions/poll';
-import {Button,Container,Header,Card} from 'semantic-ui-react'
-import PollGrid from './PollGrid/PollGrid';
+import {Button,Container,Header,Card,Segment,Dimmer,Loader} from 'semantic-ui-react'
+import PollResults from './PollResults'
 class Poll extends Component {
   
   componentDidMount(){
@@ -12,22 +12,22 @@ class Poll extends Component {
   render() {
     console.log(this.props.poll)
     const {poll} = this.props.poll;
-    console.log(poll)
     // Both functions only render information if it has loaded from database. 
     const answers =(poll)=>{
       try{
         console.log(poll._id);
         if(poll !== null || 'undefined')
-        return (poll.options && poll.options.map(option=>(
-        <Button primary content={option.option} key={option._id}
-          onClick = {()=>this.props.vote(poll._id,{answer:option.option})}/>
-        )))
+        return (
+          poll.options && poll.options.map(option=>(
+            <Button primary content={option.option} key={option._id}
+            onClick = {()=>{this.props.vote(poll._id,{answer:option.option})}}/>
+          ))
+        )
       }
       catch(err){
         console.log(err)
       }
     }
-    
     const question =(poll)=>{
       try{
         if(poll !== null || 'undefined')
@@ -38,7 +38,7 @@ class Poll extends Component {
       }
     }
     // Only renders if there is information to render
-    if(poll!==null || "undefined"){
+    if(poll !==null || "undefined"){
     return(
       <Container fluid>
         <Card centered>
@@ -49,12 +49,21 @@ class Poll extends Component {
           <Card.Content extra>
             {answers(poll)}
           </Card.Content>
+          <Card.Content>
+            <PollResults poll ={poll}/>
+          </Card.Content>
         </Card>
     </Container>
     )
   }
   else{
-    return <h1>Data Loading</h1>
+    return (
+    <Segment>
+      <Dimmer active>
+        <Loader indeterminate>Loading Information</Loader>
+        </Dimmer>
+    </Segment>
+    )
   }
 }
 
