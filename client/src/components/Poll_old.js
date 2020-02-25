@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {getPoll,vote} from '../actions/poll';
-import {Button,Container,Header,Card,Segment,Dimmer,Loader} from 'semantic-ui-react'
+import {Button,Container,Header,Card,Segment,Dimmer,Loader, ButtonGroup} from 'semantic-ui-react'
 import PollResults from './PollResults'
 class Poll extends Component {
   
@@ -41,13 +41,15 @@ class Poll extends Component {
     if(poll !==null || "undefined"){
     return(
       <Container fluid>
-        <Card centered>
+        <Card center fluid >
           <Card.Content>
             <Card.Header as ='h2'>Question of the day!</Card.Header>
             <Card.Meta> {question(poll)} </Card.Meta>
           </Card.Content>
           <Card.Content extra>
-            {answers(poll)}
+            <ButtonGroup>
+              {answers(poll)}
+            </ButtonGroup>
           </Card.Content>
           <Card.Content>
             <PollResults poll ={poll}/>
