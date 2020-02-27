@@ -39,12 +39,8 @@ module.exports = function validateRegisterInput(data){
     errors.password2 = 'Confirm password field is required';
   }
 
-
   return {
     errors,
     isValid: isEmpty(errors)
   }
-
-
-
 }
