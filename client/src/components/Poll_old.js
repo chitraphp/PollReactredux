@@ -14,6 +14,7 @@ class Poll extends Component {
     const {poll} = this.props.poll;
     console.log(poll.status)
     // Both functions only render information if it has loaded from database. 
+    
     const answers =(poll)=>{
       try{
         console.log(poll._id);
@@ -42,13 +43,13 @@ class Poll extends Component {
     if(poll !==null || "undefined"){
     return(
       <Container fluid>
-        <Card center fluid >
+        <Card fluid >
           <Card.Content>
             <Card.Header as ='h2'>Question of the day!</Card.Header>
             <Card.Meta> {question(poll)} </Card.Meta>
           </Card.Content>
           <Card.Content extra>
-            <ButtonGroup>
+            <ButtonGroup flex='true'>
               {answers(poll)}
             </ButtonGroup>
           </Card.Content>

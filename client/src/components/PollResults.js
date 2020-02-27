@@ -8,13 +8,13 @@ const PollResults = (props)=>{
       try{
         if(props.poll !== null || 'undefined'){
             return props.poll.options.map((option)=>(
-              <Reveal key = {option._id} animated='move'>
+              <Reveal animated='move'>
                 <RevealContent visible>
                 <Segment  color ='teal' >
                   <p>See what others thought!</p>
                 </Segment>
                 </RevealContent>
-                <Reveal.Content hidden>
+                <Reveal.Content   hidden key = {option._id} >
                   <Segment  color ='teal'>
                     <p> {option.option} : {option.votes}</p>  
                   </Segment>
