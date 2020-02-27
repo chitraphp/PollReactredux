@@ -80,10 +80,11 @@ class Poll extends Component {
           <Card.Content>
             <PollResults poll ={poll}/>
           </Card.Content>
+          <Card.Content>
+            <Chart poll={poll}/>
+          </Card.Content>
         </Card>
-        {/* <div>
-          <Bar data={chartData} height={50} options={{}}/>
-        </div> */}
+        
         
     </Container>
     )
