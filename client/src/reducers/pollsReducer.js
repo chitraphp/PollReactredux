@@ -15,7 +15,7 @@ export default function(state = initialState, action) {
         ...state,
         poll:action.payload
       }    
-      case GET_POLLS:
+    case GET_POLLS:
       return {
         ...state,
         polls:action.payload

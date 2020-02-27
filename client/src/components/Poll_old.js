@@ -13,11 +13,7 @@ class Poll extends Component {
   render() {
     console.log(this.props.poll)
     const {poll} = this.props.poll;
-<<<<<<< HEAD
     console.log(poll.status)
-=======
-    
->>>>>>> 7e42fea9bf1b3a9b3816232f41f46b067981017b
     // Both functions only render information if it has loaded from database. 
     
     const answers =(poll)=>{
@@ -89,9 +85,9 @@ class Poll extends Component {
             <PollResults poll ={poll}/>
           </Card.Content>
         </Card>
-        <div>
+        {/* <div>
           <Bar data={chartData} height={50} options={{}}/>
-        </div>
+        </div> */}
         
     </Container>
     )
