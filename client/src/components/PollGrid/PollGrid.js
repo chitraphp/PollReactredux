@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
 import PollGridTable from './PollGridTable'
 import NewPoll from '../NewPoll';
-import {getPolls} from '../actions/poll';
-import axios from 'axios';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import {getPolls} from '../../actions/poll';
+import PropTypes from 'prop-types'
+import {connect } from 'react-redux'
+
 class PollGrid extends Component{
-    state = {
-        polls:[],
-        page:1,
-        itemsPerPage:5
-    }
-    setPageNum = (event, { activePage }) => {
-        this.setState({ page: activePage });
-    };
+    // state = {
+    //     page:1,
+    //     itemsPerPage:5
+    // }
+    // setPageNum = (event, { activePage }) => {
+    //     this.setState({ page: activePage });
+    // };
     // Grabs All Polls from database 
-    getPollData= async () => {
-        const response= await axios.get('http://localhost:8000/api/poll/all')  
-        console.log(response.data)
-        const body = response.data        
-        console.log(body)
-        this.setState({polls: body.polls})
-    }
+    // getPollData= async () => {
+    //     const response= await axios.get('http://localhost:8000/api/poll/all')  
+    //     console.log(response.data)
+    //     const body = response.data        
+    //     console.log(body)
+    //     this.setState({polls: body.polls})
+    // }
     componentDidMount(){
-        this.getPollData()
+        this.props.getPolls()
     }
     // While polls are not loaded or there are no polls to grab
     NoPolls =()=>{
@@ -38,13 +37,14 @@ class PollGrid extends Component{
             ) 
         }
     render(){   
-        if( this.state.polls.length=== 0 ) {
+        console.log(this.props.polls)
+        if( this.props.polls.length=== 0 ) {
                     return(
                     this.NoPolls()
                 ) 
             }
         else{
-            console.log(this.state.polls)
+            console.log(this.props.polls)
             // send through polls as props to children component
             return(
                 <PollGridTable polls= {this.state.polls} page={this.state.page} itemsPerPage={this.state.itemsPerPage} onPage={this.setPageNum}/>
@@ -56,11 +56,11 @@ class PollGrid extends Component{
 PollGrid.propTypes = {
     getPolls: PropTypes.func.isRequired,
     polls: PropTypes.object.isRequired,
-  };
-  
-  const mapStateToProps = state => ({
+};
+
+const mapStateToProps = state => ({
     polls: state.polls
-  });
+});
 
 
-export default connect(mapStateToProps, { getPolls})(PollGrid);
+export default connect(mapStateToProps, {getPolls})(PollGrid);
