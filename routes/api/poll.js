@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Poll = require('../../models/poll');
 const validatePollInput = require('../../validation/poll');
+const validateStatusInput = require('../../validation/status');
 
 //  @route  GET api/users/test
 //  @desc   Tests user route
@@ -70,6 +71,30 @@ router.get('/test',
     });
     poll.save().then(poll => res.json(poll))
     .catch(err=> console.log(err));
+  });
+
+/**********************************Update poll***********************************/
+  router.post('/:id',(req,res)=>{
+    const {status} = req.body;
+    const { errors, isValid } = validateStatusInput(req.body);
+    if(!isValid){
+      return res.status(400).json(errors);
+    }
+    /***Poll.update({_id:ObjectId(req.params.id)}, {$set: {"status":status}})
+    .then(poll => res.json(poll))
+    .catch(err=> console.log(err));***/
+    Poll.findById({_id:req.params.id})      
+    .then(poll => {
+      if (!poll) {
+        errors.nopoll = 'There is no  poll';
+        return res.status(404).json(errors);
+      }  
+      poll.status=status;
+      poll.save().then(poll => res.json(poll))
+    .catch(err=> console.log(err));
+    })
+    .catch(err => res.status(404).json({ poll: 'There is no poll' }));
+
   });
 
 /*************************vote on a poll*************************/
