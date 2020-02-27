@@ -3,6 +3,8 @@ import PollGridTable from './PollGridTable'
 import NewPoll from '../NewPoll';
 import {getPolls} from '../actions/poll';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 class PollGrid extends Component{
     state = {
         polls:[],
@@ -51,7 +53,7 @@ class PollGrid extends Component{
     }
 }
 
-Poll.propTypes = {
+PollGrid.propTypes = {
     getPolls: PropTypes.func.isRequired,
     polls: PropTypes.object.isRequired,
   };

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_POLL , SET_POLLS,SET_CURRENT_POLL} from './actionTypes';
+import { GET_POLL,GET_POLLS, SET_POLLS,SET_CURRENT_POLL} from './actionTypes';
 
 
 export const setPolls = polls => ({

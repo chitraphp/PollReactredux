@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {getPoll,vote} from '../actions/poll';
 import {Button,Container,Header,Card,Segment,Dimmer,Loader, ButtonGroup} from 'semantic-ui-react';
 import PollResults from './PollResults';
+import Chart from './Chart';
 import {Bar} from 'react-chartjs-2';
 class Poll extends Component {
   
@@ -30,11 +31,6 @@ class Poll extends Component {
         console.log(err)
       }
     }
-        var array=[];
-        for(var i=0;i<poll.options;i++){
-          array.push(poll.options[i]);
-        }
-        console.log(array);
    /****var chartData1= {     
       labels: poll.options.map(option => option.option),
       datasets:[
@@ -85,7 +81,7 @@ class Poll extends Component {
           </Card.Content>
         </Card>
         <div>
-          <Bar data={chartData} height={50} options={{}}/>
+          <Chart poll={poll}  height={50} options={{}}/>
         </div>
         
     </Container>
