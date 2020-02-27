@@ -20,9 +20,9 @@ class ToggleActive extends Component{
         const inactive='inactive'
         return(
             <Button.Group size='small'>
-                <Button  onClick={()=>this.onChangeStatus(active,thisId)}>Active</Button>
+                <Button color = 'green' onClick={()=>this.onChangeStatus(active,thisId)}>Active</Button>
                 <Button.Or />
-                <Button  onClick={()=>this.onChangeStatus(inactive,thisId)}>Inactive</Button>
+                <Button color ='red'  onClick={()=>this.onChangeStatus(inactive,thisId)}>Inactive</Button>
             </Button.Group>
         )
     }

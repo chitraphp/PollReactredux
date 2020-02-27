@@ -33,7 +33,7 @@ export const getPolls = () => async dispatch => {
 };
 
 export const updatePoll=(data)=>async dispatch=>{
-  const response = await axios.put(`api/poll/${data.id}`)
+  const response = await axios.put(`api/poll/${data.id}/${data.status}`)
   if(response.data !== null){
     dispatch({type:SET_POLL,payload:response.data})
   }else{
