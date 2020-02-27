@@ -74,7 +74,7 @@ router.get('/test',
   });
 
 /**********************************Update poll***********************************/
-  router.post('/:id',(req,res)=>{
+  router.put('/:id',(req,res)=>{
     const {status} = req.body;
     const { errors, isValid } = validateStatusInput(req.body);
     if(!isValid){
@@ -86,7 +86,7 @@ router.get('/test',
     Poll.findById({_id:req.params.id})      
     .then(poll => {
       if (!poll) {
-        errors.nopoll = 'There is no  poll';
+        errors.nopoll = 'There is no poll';
         return res.status(404).json(errors);
       }  
       poll.status=status;
