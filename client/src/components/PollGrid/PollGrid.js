@@ -38,7 +38,7 @@ class PollGrid extends Component{
         }
     render(){   
         console.log(this.props.polls)
-        if( this.props.polls === null || 'undefined') {
+        if( this.props.polls.length ===0) {
                     return(
                     this.NoPolls()
                 ) 
@@ -59,7 +59,7 @@ class PollGrid extends Component{
 // };
 
 const mapStateToProps = state => ({
-    polls: state.polls
+    polls: state.poll.polls
 });
 
 

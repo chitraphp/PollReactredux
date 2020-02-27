@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_POLL , SET_POLLS,SET_CURRENT_POLL,GET_POLLS} from './actionTypes';
+import { GET_POLL , SET_POLLS,SET_CURRENT_POLL,GET_POLLS, SET_POLL} from './actionTypes';
 
 
 export const setPolls = polls => ({
@@ -32,7 +32,14 @@ export const getPolls = () => async dispatch => {
   }
 };
 
-
+export const updatePoll=(data)=>async dispatch=>{
+  const response = await axios.put(`api/poll/${data.id}`)
+  if(response.data !== null){
+    dispatch({type:SET_POLL,payload:response.data})
+  }else{
+    dispatch({type:SET_POLL,payload:null})
+  }
+}
 export const vote = (id,data) => async dispatch => {
   /**const response = await axios.post('/api/poll/vote/${id}',data);
   if(response.data !== null){

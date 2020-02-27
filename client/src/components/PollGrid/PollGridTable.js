@@ -5,10 +5,11 @@ import NewPoll from '../NewPoll'
 
 const PollGridTable = (props) =>{
     // Logic for pagination functionality
+    console.log(props)
     const itemsPerPage=props.itemsPerPage
     const page =props.page
-    const totalPages = props.polls.length/itemsPerPage
-    const polls= props.polls.slice(
+    const totalPages = props.polls.polls.length/itemsPerPage
+    const polls= props.polls.polls.slice(
         (page - 1) * itemsPerPage,
         (page - 1) * itemsPerPage + itemsPerPage
     )

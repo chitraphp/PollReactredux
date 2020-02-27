@@ -1,4 +1,5 @@
 import React from 'react';
+import ToggleActive from './ToggleActive'
 // import { Link } from 'react-router-dom';
 import {Table,Dropdown}from 'semantic-ui-react'
 import _ from 'lodash'
@@ -19,7 +20,11 @@ const PollGridRow =(props)=> {
                 //Row to be displayed in actual table
             <Table.Row>
                 <Table.Cell>{props.poll.question}</Table.Cell>
-                <Table.Cell>{props.poll.status}</Table.Cell>
+            <Table.Cell>
+                    Current Status: {props.poll.status}
+                    <br/>
+                <ToggleActive id = {props.poll._id}/>    
+            </Table.Cell>
                 <Table.Cell> <Dropdown
                     placeholder='Select Option'
                     fluid
