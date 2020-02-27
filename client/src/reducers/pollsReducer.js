@@ -1,4 +1,4 @@
-import { SET_POLLS,GET_POLL, SET_CURRENT_POLL } from '../actions/actionTypes';
+import { GET_POLLS,GET_POLL, SET_CURRENT_POLL } from '../actions/actionTypes';
 const initialState = {
   poll:{},
   polls:[]
@@ -15,6 +15,11 @@ export default function(state = initialState, action) {
         ...state,
         poll:action.payload
       }    
+      case GET_POLLS:
+      return {
+        ...state,
+        polls:action.payload
+      }          
     default:
       return state;
   }

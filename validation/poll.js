@@ -18,6 +18,13 @@ module.exports = function validatePollInput(data) {
   if (Validator.isEmpty(data.question)) {
     errors.question = 'Question field is required';
   }
+  if(data.options.length === 0){
+    errors.option = 'provide options'
+  }
+
+  if(data.options.length === 1){
+    errors.option = 'provide minimum two options'
+  }
 
   return {
     errors,

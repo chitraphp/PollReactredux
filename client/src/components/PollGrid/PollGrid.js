@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PollGridTable from './PollGridTable'
-import NewPoll from '../NewPoll'
-import axios from 'axios'
+import NewPoll from '../NewPoll';
+import {getPolls} from '../actions/poll';
+import axios from 'axios';
 class PollGrid extends Component{
     state = {
         polls:[],
@@ -50,5 +51,14 @@ class PollGrid extends Component{
     }
 }
 
+Poll.propTypes = {
+    getPolls: PropTypes.func.isRequired,
+    polls: PropTypes.object.isRequired,
+  };
+  
+  const mapStateToProps = state => ({
+    polls: state.polls
+  });
 
-export default PollGrid;
+
+export default connect(mapStateToProps, { getPolls})(PollGrid);

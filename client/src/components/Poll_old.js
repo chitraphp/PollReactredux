@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {getPoll,vote} from '../actions/poll';
-import {Button,Container,Header,Card,Segment,Dimmer,Loader, ButtonGroup} from 'semantic-ui-react'
-import PollResults from './PollResults'
+import {Button,Container,Header,Card,Segment,Dimmer,Loader, ButtonGroup} from 'semantic-ui-react';
+import PollResults from './PollResults';
+import {Bar} from 'react-chartjs-2';
 class Poll extends Component {
   
   componentDidMount(){
@@ -12,7 +13,11 @@ class Poll extends Component {
   render() {
     console.log(this.props.poll)
     const {poll} = this.props.poll;
+<<<<<<< HEAD
     console.log(poll.status)
+=======
+    
+>>>>>>> 7e42fea9bf1b3a9b3816232f41f46b067981017b
     // Both functions only render information if it has loaded from database. 
     
     const answers =(poll)=>{
@@ -30,6 +35,33 @@ class Poll extends Component {
         console.log(err)
       }
     }
+        var array=[];
+        for(var i=0;i<poll.options;i++){
+          array.push(poll.options[i]);
+        }
+        console.log(array);
+   /****var chartData1= {     
+      labels: poll.options.map(option => option.option),
+      datasets:[
+        {
+          label: poll.question,      
+          data: poll.options.map(option => option.votes)
+        }
+      ]                     
+ };  ***/
+ /***var test={"question":"what color","options":[{"option":"yes","votes":6},{"option":"no","votes":9}]}
+ var x = test.options.map(option=>option.option);
+ console.log(x);
+ 
+   const chartData = {
+      labels:['china','india','usa'],
+      datasets:[{
+        label:'Testing',
+        data:[400,200,300]
+      }]
+    };
+*****/
+
     const question =(poll)=>{
       try{
         if(poll !== null || 'undefined' || poll.status==='active')
@@ -57,6 +89,10 @@ class Poll extends Component {
             <PollResults poll ={poll}/>
           </Card.Content>
         </Card>
+        <div>
+          <Bar data={chartData} height={50} options={{}}/>
+        </div>
+        
     </Container>
     )
   }

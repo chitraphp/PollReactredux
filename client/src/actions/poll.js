@@ -22,6 +22,17 @@ export const getPoll = () => async dispatch => {
   }
 };
 
+export const getPolls = () => async dispatch => {
+  const response =await axios.get(`/api/poll/all`);
+  if(response.data !== null ){
+    dispatch({type: GET_POLLS,payload: response.data})
+  }
+  else{
+    dispatch({type:GET_POLLS, payload:null})
+  }
+};
+
+
 export const vote = (id,data) => async dispatch => {
   /**const response = await axios.post('/api/poll/vote/${id}',data);
   if(response.data !== null){
