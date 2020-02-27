@@ -74,7 +74,7 @@ router.get('/test',
   });
 
 /**********************************Update poll***********************************/
-  router.post('/:id',(req,res)=>{
+  router.put('/:id',(req,res)=>{
     const {status} = req.body;
     const { errors, isValid } = validateStatusInput(req.body);
     if(!isValid){
