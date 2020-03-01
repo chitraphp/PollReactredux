@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const poll = require('./routes/api/poll');
 const user = require('./routes/api/user');
-const cors =require('cors')
+const cors =require('cors');
 const app = express();
-
+const passportSetup = require('./config/passport-setup');
+//chitra
 app.use(cors())
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());

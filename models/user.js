@@ -16,5 +16,16 @@ const UserSchema = new Schema({
     required: true
   }  
 });
+// const UserSchema = new Schema({
+//   id:{
+//     type:string,
+//   },
+//   email:{
+//     type:String,
+//     lowercase:true
+//   }
+
+// });
+
 
 module.exports = User = mongoose.model('users', UserSchema);

@@ -58,3 +58,17 @@ export const logoutUser = () => dispatch => {
   // Set current user to {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
 };
+//google authentication  chitra
+export const googleLogin = (userData, history) => dispatch => {
+  axios
+    .get('/api/users/google')
+    .then(res => history.push('/admin'))
+    .catch(err => 
+      dispatch(
+        {
+          type: GET_ERRORS,
+          payload: " "
+        }
+      ));
+};
+

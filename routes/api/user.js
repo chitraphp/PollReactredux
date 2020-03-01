@@ -6,6 +6,10 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 const validationRegisterInput = require('../../validation/register');
 const validationLoginInput = require('../../validation/login');
+//google
+//const passportJWT = passport.authenticate('jwt', { session: false });
+
+
 
 const router = express.Router();
 
@@ -97,4 +101,18 @@ router.post('/register',(req,res)=>{
 
   })
 })
+
+router.get('/google',passport.authenticate('google',{
+  scope:['profile']
+}));
+
+router.get('/google/redirect',(req,res)=>{
+  res.send('you reached google cb')
+});
+
+//oAuth microsoft
+// router.route('/oauth/google')
+//   .post(passport.authenticate('googleToken', { session: false }), (req,res)=>{
+    
+//   });
 module.exports=router;

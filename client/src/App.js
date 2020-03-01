@@ -11,6 +11,7 @@ import Logout from './components/auth/Logout';
 import NavBar from './components/HomePage/NavigationBar'
 import PollGrid from './components/PollGrid/PollGrid';
 import PrivateRoute from './components/common/PrivateRoute';
+import Google from './components/auth/Google';
 
 import './App.css';
 
@@ -26,6 +27,7 @@ class App extends Component{
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/logout" component={Logout} />
+            <Route exact path="/google" component={Google} />
             <Route exact path='/home' component={Poll}/>
             <PrivateRoute exact path='/table' component={PollGrid}/>
             <Redirect to ='/home'/>

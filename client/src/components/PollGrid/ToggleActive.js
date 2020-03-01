@@ -20,13 +20,14 @@ class ToggleActive extends Component{
         const inactive='inactive'
         return(
             <Button.Group size='small'>
-                <Button color = 'green' onClick={()=>this.onChangeStatus(active,thisId)}>Active</Button>
+                <Button color = 'green' onClick={()=>this.onChangeStatus({status:active},thisId)}>Active</Button>
                 <Button.Or />
                 <Button color ='red'  onClick={()=>this.onChangeStatus(inactive,thisId)}>Inactive</Button>
             </Button.Group>
         )
     }
 }
+
 
 const mapStateToProps =(state)=>({
     poll : state.poll

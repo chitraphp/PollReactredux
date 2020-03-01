@@ -1,34 +1,40 @@
-import React from 'react';
-import {Bar} from 'react-chartjs-2';
-import {Button} from 'semantic-ui-react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+//import {Button} from 'semantic-ui-react';
 
-const Chart=(props)=>{
-  console.log(props);
-  
-  //console.log(options);
-
-  var tasks = [];
- 
-// options.forEach(function (option) {
- 
-//     tasks.push(option.option);
-     
-// });
-
-console.log(tasks);
-
-  /**var chartData1= {     
-    labels: options.map(option => option.option),
-    datasets:[
-      {
-        label: question,      
-        data: options.map(option => option.votes)
-      }
-    ]                     
-  };  ***/
-  
-  return(
-    <div> {props.poll.question}</div>
-  );
+ class Chart extends Component {     
+  render() {
+    const {poll} = this.props.poll;
+    //console.log(poll.options);  
+//var len = poll.options.length;
+//console.log(len);
+    //var data = poll.options.map(option => option.option);
+       /****var chartData1= {     
+      labels: poll.options.map(option => option.option),
+      datasets:[
+        {
+          label: poll.question,      
+          data: poll.options.map(option => option.votes)
+        }
+      ]                     
+ };  ***/
+    
+    return (
+      <div>
+        {poll.question}
+        
+      </div>
+    )
+  }
 }
-export default Chart;
+
+Chart.propTypes = {  
+  poll: PropTypes.object.isRequired,  
+};
+
+const mapStateToProps = state => ({
+  poll: state.poll
+});
+
+export default connect(mapStateToProps, null)(Chart);
