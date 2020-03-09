@@ -97,11 +97,13 @@ const leftItems = [
     const rightItems = [
     { as: "a", content: "Login", key: "login" , link:'/login'},
     { as: "a", content: "Register", key: "register", link:'/register'},
-    { as: "a", content: "Logout", key: "logout", link:'/logout'},
-    { as: "a", content: "Google", key: "google", link:'/google'}
+    { as: "a", content: "Logout", key: "logout", link:'/logout'}
+    
+    
     ];
     // const alternateItem =[
     //     {as: 'a' , content:'Logout', key:'logout', link:'/logout' },
+    //{ as: "a", content: "Google", key: "google", link:'/google'}
     // ]
     const NavigationBar = () => (
     <NavBar leftItems={leftItems} rightItems={rightItems}> 

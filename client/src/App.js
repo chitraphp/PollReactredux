@@ -12,6 +12,7 @@ import NavBar from './components/HomePage/NavigationBar'
 import PollGrid from './components/PollGrid/PollGrid';
 import PrivateRoute from './components/common/PrivateRoute';
 import Google from './components/auth/Google';
+import GoogleOAuth from './components/GoogleOAuth';
 
 import './App.css';
 
@@ -21,13 +22,14 @@ class App extends Component{
     <Provider store={store}>
       <Router>
         <NavBar/>
+        <GoogleOAuth/>
         <div className="App">
           <Switch>
             <Route exact path="/admin" component={Landing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/logout" component={Logout} />
-            <Route exact path="/google" component={Google} />
+            <Route exact path="/google" component={GoogleOAuth} />
             <Route exact path='/home' component={Poll}/>
             <PrivateRoute exact path='/table' component={PollGrid}/>
             <Redirect to ='/home'/>

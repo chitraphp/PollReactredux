@@ -1,4 +1,4 @@
-import {GET_ERRORS, SET_CURRENT_USER} from './actionTypes';
+import {GET_ERRORS, SET_CURRENT_USER,SIGNED_IN,SIGNED_OUT} from './actionTypes';
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
@@ -59,16 +59,34 @@ export const logoutUser = () => dispatch => {
   dispatch(setCurrentUser({}));
 };
 //google authentication  chitra
-export const googleLogin = (userData, history) => dispatch => {
-  axios
-    .get('/api/users/google')
-    .then(res => history.push('/admin'))
-    .catch(err => 
-      dispatch(
-        {
-          type: GET_ERRORS,
-          payload: " "
-        }
-      ));
+// export const googleLogin = (data) => async dispatch => {
+//   console.log('token',data);
+//   const res = await axios
+//     .get('http://localhost:8000/api/users/google')
+//     console.log('response',res)
+// };
+
+//udemy google oauth
+export const signIn = user => async dispatch=> {
+  console.log('userAction', user);
+  await axios.post('api/users/gapiuser',user)
+  .then(res=>dispatch({
+    type: SIGNED_IN,
+    payload: user
+  }))
+  .catch(err=>dispatch({
+    type: SIGNED_IN,
+    payload: null
+  }))
+  // return {
+  //   type: SIGNED_IN,
+  //   payload: user
+  // };
+};
+
+export const signOut = () => {
+  return {
+    type: SIGNED_OUT
+  };
 };
 

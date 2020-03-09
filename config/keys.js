@@ -3,7 +3,7 @@ module.exports = {
     mongoURI: 'mongodb://chitra:chitra19@ds055564.mlab.com:55564/pollreactapp',
     secretOrKey: 'secret',
     google:{
-      clientID:'868572174556-l3dmbqq7jkf91aa07h57mkpbo637pj6p.apps.googleusercontent.com',
-      clientSecret:'f4YwSHDo2vwstT5KTkJHa19t'
+      clientID:'400612135897-bqael6r78bhab5gj0f5dkcvdh7jbt7ek.apps.googleusercontent.com',
+      clientSecret:'lyOMaAWK7KNE5b-MXq0aGkMJ'
     }
 }
